@@ -397,7 +397,7 @@ CK_RV pkcs11_find_get_attribute(CK_SESSION_HANDLE hSession, CK_OBJECT_HANDLE hOb
     }
 
     pkcs11_debug_attributes(pTemplate, ulCount);
-
+    PKCS11_DEBUG("Attribute count: %lu\r\n", ulCount);
     for (i = 0; i < ulCount; i++)
     {
         pkcs11_attrib_model_ptr pAttribute = pkcs11_find_attrib((const pkcs11_attrib_model_ptr)pObject->attributes,
@@ -407,7 +407,7 @@ CK_RV pkcs11_find_get_attribute(CK_SESSION_HANDLE hSession, CK_OBJECT_HANDLE hOb
         {
             /* 2. Otherwise, if the specified value for the object is invalid(the object does not possess such an
                attribute), then the ulValueLen field in that triple is modified to hold the value CK_UNAVAILABLE_INFORMATION. */
-
+            PKCS11_DEBUG("Attribute not found: %ld\r\n", i);
             pTemplate[i].ulValueLen = CK_UNAVAILABLE_INFORMATION;
             if (!rv)
             {
@@ -416,6 +416,7 @@ CK_RV pkcs11_find_get_attribute(CK_SESSION_HANDLE hSession, CK_OBJECT_HANDLE hOb
         }
         else if (pAttribute->func)
         {
+            PKCS11_DEBUG("Attribute found: %ld\r\n", i);
             if (CKR_OK == pkcs11_lock_context(pLibCtx))
             {
                 /* Attribute function found so try to execute it */
@@ -442,4 +443,3 @@ CK_RV pkcs11_find_get_attribute(CK_SESSION_HANDLE hSession, CK_OBJECT_HANDLE hOb
 }
 
 /** @} */
-

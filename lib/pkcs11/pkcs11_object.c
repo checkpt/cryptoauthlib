@@ -39,6 +39,7 @@
 #include "pkcs11_find.h"
 #include "pkcs11_key.h"
 #include "pkcs11_cert.h"
+#include "pkcs11_slot.h"
 #include "cryptoauthlib.h"
 
 /**
@@ -459,6 +460,7 @@ CK_RV pkcs11_object_create
     rv = pkcs11_object_alloc(&pObject);
     if (pObject)
     {
+        pObject->config = &pSession->slot->cfg_zone;
         switch (*pClass)
         {
         case CKO_CERTIFICATE:
@@ -557,4 +559,3 @@ CK_RV pkcs11_object_deinit(pkcs11_lib_ctx_ptr pContext)
 
 
 /** @} */
-

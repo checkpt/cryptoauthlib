@@ -322,7 +322,7 @@ static CK_RV pkcs11_config_parse_object(pkcs11_slot_ctx_ptr slot_ctx, char* cfgs
             pObject->config = &slot_ctx->cfg_zone;
         }
     }
-#if !PKCS11_USE_STATIC_MEMORY
+#if PKCS11_USE_STATIC_MEMORY
     else if (!strcmp(argv[0], "certificate") && argc > 3)
     {
         rv = pkcs11_object_alloc(&pObject);

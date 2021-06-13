@@ -365,6 +365,7 @@ CK_RV C_CreateObject
 )
 {
     PKCS11_DEBUG("\r\n");
+    PKCS11_DEBUG("Atrribute: %lx\r\n", pTemplate->type);
     PKCS11_DEBUG_RETURN(pkcs11_object_create(hSession, pTemplate, ulCount, phObject));
 }
 
