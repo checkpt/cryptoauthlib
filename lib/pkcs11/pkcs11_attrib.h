@@ -67,6 +67,7 @@ CK_RV pkcs11_attrib_value(CK_ATTRIBUTE_PTR pAttribute, const CK_ULONG ulValue, c
 CK_RV pkcs11_attrib_false(const CK_VOID_PTR pObject, CK_ATTRIBUTE_PTR pAttribute);
 CK_RV pkcs11_attrib_true(const CK_VOID_PTR pObject, CK_ATTRIBUTE_PTR pAttribute);
 CK_RV pkcs11_attrib_empty(const CK_VOID_PTR pObject, CK_ATTRIBUTE_PTR pAttribute);
+CK_RV pkcs11_attrib_id(const CK_VOID_PTR pObject, CK_ATTRIBUTE_PTR pAttribute);
 
 
 #endif /* PKCS11_ATTRIB_H_ */

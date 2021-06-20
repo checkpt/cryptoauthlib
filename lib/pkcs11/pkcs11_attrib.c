@@ -122,6 +122,10 @@ CK_RV pkcs11_attrib_empty(const CK_VOID_PTR pObject, CK_ATTRIBUTE_PTR pAttribute
     return pkcs11_attrib_fill(pAttribute, NULL, 0);
 }
 
+CK_RV pkcs11_attrib_id(const CK_VOID_PTR pObject, CK_ATTRIBUTE_PTR pAttribute)
+{
+    ((void)pObject);
+    return pkcs11_attrib_fill(pAttribute, "0", 1);
+}
 
 /** @} */
-

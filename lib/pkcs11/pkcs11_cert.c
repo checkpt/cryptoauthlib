@@ -237,7 +237,7 @@ const pkcs11_attrib_model pkcs11_cert_x509public_attributes[] = {
     /** DER-encoded Certificate subject name */
     { CKA_SUBJECT,                    pkcs11_attrib_empty                                                                               },
     /** Key identifier for public/private key pair (default empty) */
-    { CKA_ID,                         pkcs11_attrib_empty                                                                               },
+    { CKA_ID,                         pkcs11_attrib_id                                                                               },
     /** DER-encoded Certificate issuer name (default empty)*/
     { CKA_ISSUER,                     pkcs11_attrib_empty                                                                               },
     /** DER-encoding of the certificate serial number (default empty) */
@@ -406,4 +406,3 @@ CK_RV pkcs11_cert_x509_write(CK_VOID_PTR pObject, CK_ATTRIBUTE_PTR pAttribute)
 
 
 /** @} */
-

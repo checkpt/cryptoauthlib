@@ -319,7 +319,7 @@ const pkcs11_attrib_model pkcs11_key_public_attributes[] = {
     /** Type of key */
     { CKA_KEY_TYPE,           pkcs11_object_get_type                                                              },
     /** Key identifier for key (default empty) */
-    { CKA_ID,                 pkcs11_attrib_empty                                                                 },
+    { CKA_ID,                 pkcs11_attrib_id                                                                 },
     /** Start date for the key (default empty) */
     { CKA_START_DATE,         pkcs11_attrib_empty                                                                 },
     /** End date for the key (default empty) */
@@ -409,7 +409,7 @@ const pkcs11_attrib_model pkcs11_key_private_attributes[] = {
     /** Type of key */
     { CKA_KEY_TYPE,            pkcs11_object_get_type                                                                },
     /** Key identifier for key (default empty) */
-    { CKA_ID,                  pkcs11_attrib_empty                                                                   },
+    { CKA_ID,                  pkcs11_attrib_id                                                                   },
     /** Start date for the key (default empty) */
     { CKA_START_DATE,          pkcs11_attrib_empty                                                                   },
     /** End date for the key (default empty) */
@@ -528,7 +528,7 @@ const pkcs11_attrib_model pkcs11_key_secret_attributes[] = {
     /** Type of key */
     { CKA_KEY_TYPE,           pkcs11_object_get_type                                                              },
     /** Key identifier for key (default empty) */
-    { CKA_ID,                 pkcs11_attrib_empty                                                                 },
+    { CKA_ID,                 pkcs11_attrib_id                                                                 },
     /** Start date for the key (default empty) */
     { CKA_START_DATE,         pkcs11_attrib_empty                                                                 },
     /** End date for the key (default empty) */
@@ -955,7 +955,7 @@ CK_RV pkcs11_key_derive
             {
                 if (ATCA_SLOT_CONFIG_WRITE_ECDH_MASK & pSession->slot->cfg_zone.SlotConfig[pBaseKey->slot])
                 {
-                    uint16_t read_key_id = (ATCA_SLOT_CONFIG_READKEY_MASK & pSession->slot->cfg_zone.SlotConfig[pBaseKey->slot]) 
+                    uint16_t read_key_id = (ATCA_SLOT_CONFIG_READKEY_MASK & pSession->slot->cfg_zone.SlotConfig[pBaseKey->slot])
                                             >> ATCA_SLOT_CONFIG_READKEY_SHIFT;
                     status = atcab_ecdh_enc(pBaseKey->slot, &pEcdhParameters->pPublicData[1], pSecretKey->data,
                                             pSession->read_key, read_key_id);
