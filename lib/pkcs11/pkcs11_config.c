@@ -38,7 +38,6 @@
 #include "pkcs11_cert.h"
 #include "pkcs11_os.h"
 #include "atca_cert_chain.h"
-#include "atca_cert_openvpn.h"
 
 
 /**
@@ -338,8 +337,8 @@ static CK_RV pkcs11_config_parse_object(pkcs11_slot_ctx_ptr slot_ctx, char* cfgs
             pObject->count = pkcs11_cert_x509public_attributes_count;
 
             /* Load certificate data from the file system */
-            pObject->size = g_cert_def_2_openvpn.cert_template_size;
-            pObject->data = (CK_VOID_PTR)&g_cert_def_2_openvpn;
+            pObject->size = g_cert_def_2_device.cert_template_size;
+            pObject->data = (CK_VOID_PTR)&g_cert_def_2_device;
             pObject->flags = 0;
             pObject->config = &slot_ctx->cfg_zone;
         }
