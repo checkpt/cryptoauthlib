@@ -426,6 +426,15 @@ CK_RV pkcs11_find_get_attribute(CK_SESSION_HANDLE hSession, CK_OBJECT_HANDLE hOb
                     rv = temp;
                 }
                 pkcs11_unlock_context(pLibCtx);
+            } else {
+                PKCS11_DEBUG("pkcs11_lock_context failed\r\n");
+
+                /* Attribute function found so try to execute it */
+                CK_RV temp = pAttribute->func(pObject, &pTemplate[i]);
+                if (!rv)
+                {
+                    rv = temp;
+                }
             }
         }
         else
